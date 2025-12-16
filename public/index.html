@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Combiner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>PDF Combiner</h1>
+            <p>Merge multiple PDF files into one seamlessly.</p>
+        </header>
+
+        <main class="glass-panel">
+            <div id="drop-zone" class="drop-zone">
+                <div class="icon-container">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 16L12 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M9 11L12 8L15 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 16H16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M3 15C3 17.8284 3 19.2426 3.87868 20.1213C4.75736 21 6.17157 21 9 21H15C17.8284 21 19.2426 21 20.1213 20.1213C21 19.2426 21 17.8284 21 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M3 9C3 6.17157 3 4.75736 3.87868 3.87868C4.75736 3 6.17157 3 9 3H15C17.8284 3 19.2426 3 20.1213 3.87868C21 4.75736 21 6.17157 21 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3>Drag & Drop PDFs here</h3>
+                <p>or click to browse</p>
+                <input type="file" id="file-input" accept="application/pdf" multiple hidden>
+                <input type="file" id="folder-input" webkitdirectory hidden>
+                <div class="button-group">
+                    <button type="button" class="btn secondary" onclick="document.getElementById('file-input').click()">Select Files</button>
+                    <button type="button" class="btn secondary" onclick="document.getElementById('folder-input').click()">Select Folder</button>
+                </div>
+            </div>
+
+            <div id="file-list-container" class="file-list-container hidden">
+                <div class="list-header">
+                    <h2>Selected Files</h2>
+                    <span id="file-count">0 files</span>
+                </div>
+                <ul id="file-list" class="file-list">
+                    <!-- File items will be injected here -->
+                </ul>
+            </div>
+
+            <div class="filename-container hidden" id="filename-container">
+                <label for="filename-input">Output Filename:</label>
+                <div class="input-wrapper">
+                    <input type="text" id="filename-input" class="filename-input" placeholder="merged-document" value="merged-document">
+                    <span class="extension">.pdf</span>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button id="clear-btn" class="btn text-danger hidden">Clear All</button>
+                <button id="combine-btn" class="btn primary" disabled>Combine PDFs</button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Status / Result Modal or Toast could go here -->
+    <div id="status-message" class="status-message hidden">
+        <span id="status-text">Processing...</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
